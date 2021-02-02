@@ -1,0 +1,20 @@
+{
+    "name": "kuvardin/fields-scanner",
+    "description": "PHP library for scan the structure of foreign data",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Maxim Kuvardin",
+            "email": "maxim@kuvard.in"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Kuvardin\\FieldsScanner\\": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+      "ext-mbstring": "*"
+    }
+}
