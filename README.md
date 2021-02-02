@@ -1,6 +1,6 @@
-#PHP-library for scan the structure of foreign data
+# PHP-library for scan the structure of foreign data
 
-##Usage example
+## Usage example
 ```php
 <?php
 
@@ -34,7 +34,7 @@ foreach ($queries as $query) {
 // Отображение результата
 echo $scanner->result->getInfo();
 ```
-###Result example
+### Result example
 ```text
 Types: assoc_array (4)
 Type assoc_array:
