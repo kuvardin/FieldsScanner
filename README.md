@@ -1,5 +1,10 @@
 # PHP-library for scan the structure of foreign data
 
+## Installation
+```shell
+composer require kuvardin/fields-scanner
+```
+
 ## Usage example
 ```php
 <?php

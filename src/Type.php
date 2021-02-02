@@ -85,26 +85,26 @@ abstract class Type
             return;
         }
 
-        if ($this->examples_number++ < $this->scanner->max_examples) {
-            $key = null;
 
-            if (is_string($value) || is_int($value)) {
-                $key = $value;
-            } elseif (is_bool($value)) {
-                $key = $value ? 'true' : 'false';
-            } elseif (is_float($value)) {
-                $key = (string)$value;
-            }
+        $key = null;
 
-            if ($key === null) {
-                if (!in_array($value, $this->examples, true)) {
-                    $this->examples[] = $value;
-                }
-            } elseif (array_key_exists($key, $this->examples)) {
-                $this->examples[$key]++;
-            } else {
-                $this->examples[$key] = 1;
+        if (is_string($value) || is_int($value)) {
+            $key = $value;
+        } elseif (is_bool($value)) {
+            $key = $value ? 'true' : 'false';
+        } elseif (is_float($value)) {
+            $key = (string)$value;
+        }
+
+        $in_limit = $this->scanner->max_examples === null || $this->examples_number++ < $this->scanner->max_examples;
+        if ($key === null) {
+            if ($in_limit && !in_array($value, $this->examples, true)) {
+                $this->examples[] = $value;
             }
+        } elseif (array_key_exists($key, $this->examples)) {
+            $this->examples[$key]++;
+        } elseif ($in_limit) {
+            $this->examples[$key] = 1;
         }
     }
 
