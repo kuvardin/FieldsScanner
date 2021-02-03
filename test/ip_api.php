@@ -5,14 +5,17 @@ require 'vendor/autoload.php';
 // Создаем экземпляр сканера полей
 $scanner = new Kuvardin\FieldsScanner\FieldsScanner;
 
-// Перечисляем запросы для поиска в API Google Books
-$queries = ['Саган', 'Фейнман', 'Докинз', 'Невзоров'];
+// Количество итераций
+$limit = (int)($argv[1] ?? 10);
 
-// Перебираем каждый поисковый запрос
-foreach ($queries as $query) {
+for ($i = 0; $i < $limit; $i++) {
+
+    // Генерируем случайный IP-адрес
+    $ip = random_int(1, 254) . '.' . random_int(1, 254) . '.' . random_int(1, 254) . '.' . random_int(1, 254);
+    echo $ip, PHP_EOL;
 
     // URL HTTP-запроса
-    $url = 'https://www.googleapis.com/books/v1/volumes?' . http_build_query(['q' => $query]);
+    $url = "http://ip-api.com/json/$ip";
 
     // Отправка запроса и получение результата
     $response = file_get_contents($url);
@@ -25,6 +28,8 @@ foreach ($queries as $query) {
 
     // Сканирование полученных данных
     $scanner->scan($response_json);
+
+    sleep(1);
 }
 
 // Отображение результата

@@ -85,7 +85,6 @@ abstract class Type
             return;
         }
 
-
         $key = null;
 
         if (is_string($value) || is_int($value)) {
