@@ -30,7 +30,7 @@ class TypeAssocArray extends Type
      * TypeAssocArray constructor.
      *
      * @param FieldsScanner $scanner
-     * @param $value
+     * @param mixed $value
      */
     public function __construct(FieldsScanner $scanner, $value)
     {
@@ -77,13 +77,13 @@ class TypeAssocArray extends Type
                 $this->fields[$key]->addValue($item);
             } else {
                 $this->fields[$key] = new Field($this->scanner, $item);
-                $this->fields[$key]->not_exists_number = $this->number;
+                $this->fields[$key]->not_exist_number = $this->number;
             }
         }
 
         foreach ($this->fields as $key => $field) {
             if (!array_key_exists($key, $value)) {
-                $this->fields[$key]->not_exists_number++;
+                $this->fields[$key]->not_exist_number++;
             }
         }
 

@@ -26,6 +26,21 @@ class TypeInteger extends Type
     public int $min_value;
 
     /**
+     * @var int
+     */
+    public int $positive_number = 0;
+
+    /**
+     * @var int
+     */
+    public int $zero_number = 0;
+
+    /**
+     * @var int
+     */
+    public int $negative_number = 0;
+
+    /**
      * @var bool
      */
     static protected bool $save_examples = true;
@@ -41,6 +56,14 @@ class TypeInteger extends Type
         parent::__construct($fields_scanner, $value);
         $this->max_value = $value;
         $this->min_value = $value;
+
+        if ($value > 0) {
+            $this->positive_number++;
+        } elseif ($value < 0) {
+            $this->negative_number++;
+        } else {
+            $this->zero_number++;
+        }
     }
 
     /**
@@ -73,8 +96,64 @@ class TypeInteger extends Type
             $this->min_value = $value;
         }
 
+        if ($value > 0) {
+            $this->positive_number++;
+        } elseif ($value < 0) {
+            $this->negative_number++;
+        } else {
+            $this->zero_number++;
+        }
+
         $this->saveExample($value);
         $this->number++;
+    }
+
+    /**
+     * @return bool
+     */
+    public function mayBePositive(): bool
+    {
+        return $this->positive_number !== 0;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAlwaysPositive(): bool
+    {
+        return $this->positive_number === $this->number;
+    }
+
+    /**
+     * @return bool
+     */
+    public function mayBeZero(): bool
+    {
+        return $this->zero_number !== 0;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAlwaysZero(): bool
+    {
+        return $this->zero_number === $this->number;
+    }
+
+    /**
+     * @return bool
+     */
+    public function mayBeNegative(): bool
+    {
+        return $this->negative_number !== 0;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAlwaysNegative(): bool
+    {
+        return $this->negative_number === $this->number;
     }
 
     /**

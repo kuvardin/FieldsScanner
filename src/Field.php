@@ -32,7 +32,7 @@ class Field
     /**
      * @var int
      */
-    public int $not_exists_number = 0;
+    public int $not_exist_number = 0;
 
     /**
      * @var int
@@ -96,9 +96,9 @@ class Field
     /**
      * @return bool
      */
-    public function mayNotExists(): bool
+    public function mayNotExist(): bool
     {
-        return $this->not_exists_number !== 0;
+        return $this->not_exist_number !== 0;
     }
 
     /**
@@ -119,8 +119,8 @@ class Field
             $types[] = "null ({$this->null_number})";
         }
 
-        if ($this->mayNotExists()) {
-            $types[] = "not_exists ({$this->not_exists_number})";
+        if ($this->mayNotExist()) {
+            $types[] = "not_exist ({$this->not_exist_number})";
         }
 
         $result = str_repeat($tab_symbol, $tabs) . 'Types: ' . implode(', ', $types) . "\n";

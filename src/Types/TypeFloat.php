@@ -34,7 +34,7 @@ class TypeFloat extends Type
      * TypeFloat constructor.
      *
      * @param FieldsScanner $scanner
-     * @param $value
+     * @param mixed $value
      */
     public function __construct(FieldsScanner $scanner, $value)
     {

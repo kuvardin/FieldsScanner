@@ -45,7 +45,7 @@ class TypeDissocArray extends Type
      * TypeArray constructor.
      *
      * @param FieldsScanner $scanner
-     * @param $value
+     * @param mixed $value
      */
     public function __construct(FieldsScanner $scanner, $value)
     {

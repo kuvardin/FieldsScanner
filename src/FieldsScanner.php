@@ -18,6 +18,7 @@ class FieldsScanner
     public const TYPE_FLOAT = 'float';
     public const TYPE_ASSOC_ARRAY = 'assoc_array';
     public const TYPE_DISSOC_ARRAY = 'dissoc_array';
+    public const TYPE_RESOURCE = 'resource';
 
     /**
      * @var string[]|Type[]
@@ -29,6 +30,7 @@ class FieldsScanner
         self::TYPE_FLOAT => Types\TypeFloat::class,
         self::TYPE_ASSOC_ARRAY => Types\TypeAssocArray::class,
         self::TYPE_DISSOC_ARRAY => Types\TypeDissocArray::class,
+        self::TYPE_RESOURCE => Types\TypeResource::class,
     ];
 
     /**

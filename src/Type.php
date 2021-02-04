@@ -43,7 +43,7 @@ abstract class Type
      * Type constructor.
      *
      * @param FieldsScanner $scanner
-     * @param $value
+     * @param mixed $value
      */
     public function __construct(FieldsScanner $scanner, $value)
     {
